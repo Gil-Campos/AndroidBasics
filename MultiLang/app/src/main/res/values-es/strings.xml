@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MultiLang</string>
+    <string name="editText_name_hint">Escribe tu nombre</string>
+    <string name="btn_submit">Enviar</string>
+    <string name="textView_Instructions">Hola, Usuario, si cambias el idioma a ingles en tu dispositivo, la aplicación también cambiará.</string>
+</resources>
