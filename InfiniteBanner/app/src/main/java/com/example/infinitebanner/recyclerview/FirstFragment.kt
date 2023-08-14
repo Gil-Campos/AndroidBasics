@@ -1,4 +1,4 @@
-package com.example.infinitebanner
+package com.example.infinitebanner.recyclerview
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.example.infinitebanner.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
@@ -37,12 +37,20 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
         userListAdapter = UserListAdapter()
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(view.context)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = userListAdapter
+            LinearSnapHelper().attachToRecyclerView(this)
         }
 
         userListAdapter.submitList(userList)
+
+        binding.recyclerView.scrollToPosition((Int.MAX_VALUE / 2) - ((Int.MAX_VALUE / 2) % userListAdapter.currentList.size))
     }
 }

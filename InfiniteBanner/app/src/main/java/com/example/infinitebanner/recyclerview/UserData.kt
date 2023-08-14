@@ -1,4 +1,4 @@
-package com.example.infinitebanner
+package com.example.infinitebanner.recyclerview
 
 data class UserData(
     val name: String,

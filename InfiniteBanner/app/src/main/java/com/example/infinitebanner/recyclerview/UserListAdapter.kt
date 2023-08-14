@@ -1,4 +1,4 @@
-package com.example.infinitebanner
+package com.example.infinitebanner.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -29,10 +29,14 @@ class UserListAdapter :
 
     }
 
+    override fun getItemCount(): Int {
+        return Int.MAX_VALUE
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): UserListAdapter.UserListViewHolder {
+    ): UserListViewHolder {
         return UserListViewHolder(
             ItemUserBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -42,7 +46,8 @@ class UserListAdapter :
         )
     }
 
-    override fun onBindViewHolder(holder: UserListAdapter.UserListViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: UserListViewHolder, position: Int) {
+        val positionFixed = position % currentList.size
+        holder.bind(getItem(positionFixed))
     }
 }
